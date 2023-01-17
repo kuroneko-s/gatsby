@@ -16,20 +16,20 @@ const Wrapper = styled.div`
   padding-top: 30px;
 `;
 
-const GitHistoryTopTitle = styled.div`
+const TextStyle = styled.div`
   width: 400px;
-  border-bottom: 1px solid black;
   text-align: center;
   padding: 12px 0;
   font-weight: 600;
+  font-size: 1.2rem;
 `;
 
-const GitHistoryBottomTitle = styled.div`
-  width: 400px;
+const GitHistoryTopTitle = styled(TextStyle)`
+  border-bottom: 1px solid black;
+`;
+
+const GitHistoryBottomTitle = styled(TextStyle)`
   border-top: 1px solid black;
-  text-align: center;
-  padding: 12px 0;
-  font-weight: 600;
 `;
 
 const GitHistoryBox = styled.div`
@@ -81,6 +81,7 @@ export default function GitHistoryContainer() {
             <GitHistroy context="　" hasBall={false} isLeft={false} />
             <GitHistroy context="JavaScript" hasBall={true} isLeft={false} />
             <GitHistroy context="　" hasBall={false} isLeft={false} />
+            <GitHistroy context="　" hasBall={false} isLeft={false} />
             <GitHistroy context="ElectronJS" hasBall={true} isLeft={false} />
           </GitHistoryLeft>
 
@@ -115,11 +116,16 @@ export default function GitHistoryContainer() {
             <GitHistroy context="　" hasBall={false} isLeft={true} />
             <GitHistroy context="React Native" hasBall={true} isLeft={true} />
             <GitHistroy context="　" hasBall={false} isLeft={true} />
+            <GitHistroy
+              context="2023년"
+              hasBall={false}
+              isLeft={true}
+              year={"2023"}
+            />
             <GitHistroy context="Gatsby" hasBall={true} isLeft={true} />
             <GitHistroy context="　" hasBall={false} isLeft={true} />
           </GitHistoryRight>
         </GitHistoryBox>
-        <GitHistoryBottomTitle>2023년</GitHistoryBottomTitle>
       </Wrapper>
     </Conatainer>
   );

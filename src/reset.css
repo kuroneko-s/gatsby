@@ -130,3 +130,21 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+a {
+  color: #000;
+  text-decoration: none;
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none;
+  background-color: none;
+  color: gray;
+}
+
+a:active {
+  text-decoration: none;
+  color: #000;
+  background-color: none;
+}

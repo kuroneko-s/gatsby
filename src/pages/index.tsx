@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import styled from "styled-components";
 import GitHistoryContainer from "../components/main/gitHistory/GitHistoryContainer";
 import Cover from "../components/main/Cover";
+import Portfolio from "../components/main/Portfolio";
 
 const Content = styled.section`
   height: 100vh;
@@ -20,10 +21,7 @@ const IndexPage: React.FC<PageProps> = () => {
     <Layout>
       <Cover />
       <GitHistoryContainer />
-
-      <Content>
-        <h1>Content 3</h1>
-      </Content>
+      <Portfolio />
     </Layout>
   );
 };

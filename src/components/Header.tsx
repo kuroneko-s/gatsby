@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
@@ -38,6 +39,10 @@ const Item = styled.li`
     color: gray;
   }
 
+  a {
+    width: 100%;
+  }
+
   transition: all 0.15s ease-in;
 `;
 
@@ -45,7 +50,9 @@ export default function Header() {
   return (
     <Container>
       <Wrapper>
-        <Item>Home</Item>
+        <Item>
+          <Link to="/">Home</Link>
+        </Item>
         <Item>About</Item>
         <Item>Blog</Item>
       </Wrapper>

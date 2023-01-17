@@ -9,7 +9,7 @@ interface ITextProps {
 const Container = styled.section`
   height: 100vh;
   background-color: rgba(206, 214, 224, 0.4);
-
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -31,8 +31,8 @@ const WorkHistory = styled(Text)`
   text-align: left;
   position: absolute;
 
-  bottom: 160px;
-  left: 345px;
+  bottom: 210px;
+  left: 25px;
   width: 400px;
 `;
 
@@ -54,7 +54,9 @@ export default function Cover() {
         </Text>
       </Wrapper>
       <WorkHistory fontSize="1.05rem" fontWeight="400">
-        <ul>{/* <li>2020년 11월 22일: FISystem 입사</li> */}</ul>
+        <ul>
+          <li>2020년 11월 22일: FISystem 입사</li>
+        </ul>
       </WorkHistory>
     </Container>
   );
