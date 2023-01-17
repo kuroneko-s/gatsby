@@ -10,7 +10,7 @@ interface ILayoutProps {
 const Container = styled.main`
   max-width: 1080px;
   width: 100%;
-  height: 315vh;
+  height: 300vh;
 
   margin: 0 auto;
   background-color: rgba(241, 242, 246, 1);
