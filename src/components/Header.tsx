@@ -9,7 +9,7 @@ const Container = styled.nav`
   padding: 85px 30px 10px 30px;
   opacity: 0.22;
   width: 12%;
-  height: 100vh;
+  height: 100%;
   z-index: 99;
 
   &:hover {
@@ -39,10 +39,6 @@ const Item = styled.li`
     color: gray;
   }
 
-  a {
-    width: 100%;
-  }
-
   transition: all 0.15s ease-in;
 `;
 
@@ -53,8 +49,12 @@ export default function Header() {
         <Item>
           <Link to="/">Home</Link>
         </Item>
-        <Item>About</Item>
-        <Item>Blog</Item>
+        <Item>
+          <Link to="/about">About</Link>
+        </Item>
+        <Item>
+          <Link to="/blog">Blog</Link>
+        </Item>
       </Wrapper>
     </Container>
   );

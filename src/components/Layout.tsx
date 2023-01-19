@@ -10,13 +10,14 @@ interface ILayoutProps {
 const Container = styled.main`
   max-width: 1080px;
   width: 100%;
-  height: 300vh;
+  height: 100%;
 
   margin: 0 auto;
   background-color: rgba(241, 242, 246, 1);
 `;
 
 const Content = styled.div`
+  min-height: 90vh;
   align-self: flex-end;
   padding-left: calc(12% + 60px);
 `;
