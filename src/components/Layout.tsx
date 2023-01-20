@@ -8,12 +8,12 @@ interface ILayoutProps {
 }
 
 const Container = styled.main`
-  max-width: 1080px;
+  max-width: 1280px;
   width: 100%;
   height: 100%;
 
   margin: 0 auto;
-  background-color: rgba(241, 242, 246, 1);
+  background-color: #f7f7f7;
 `;
 
 const Content = styled.div`

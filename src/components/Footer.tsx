@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 
@@ -10,6 +11,8 @@ const Container = styled.footer`
   align-items: center;
 
   height: 120px;
+
+  z-index: 3;
 
   div {
     :first-child {
@@ -36,7 +39,10 @@ export default function Footer() {
     <Container>
       <Content>
         <p>email: choidh.dev@gmail.com</p>
-        <p>name: 최동혁</p>
+        <p>
+          git:{" "}
+          <Link to="https://github.com/kuroneko-s">github.com/kuroneko-s</Link>
+        </p>
       </Content>
       <Content>
         <h1>Image</h1>

@@ -9,8 +9,8 @@ const Container = styled.nav`
   padding: 85px 30px 10px 30px;
   opacity: 0.22;
   width: 12%;
-  height: 100%;
-  z-index: 99;
+  height: 81%;
+  z-index: 2;
 
   &:hover {
     opacity: 0.7;
