@@ -8,7 +8,6 @@ interface ILayoutProps {
 }
 
 const Container = styled.main`
-  max-width: 1280px;
   width: 100%;
   height: 100%;
 

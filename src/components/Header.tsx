@@ -1,30 +1,22 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
+import { CommonPadding, IconComponent } from "../style/common";
 
 const Container = styled.nav`
-  background-color: "inherit";
-
-  position: fixed;
-  padding: 85px 30px 10px 30px;
-  opacity: 0.22;
-  width: 12%;
-  height: 81%;
-  z-index: 2;
-
-  &:hover {
-    opacity: 0.7;
-  }
-`;
-
-const Wrapper = styled.ul`
-  display: flex;
-  flex-direction: column;
+  background-color: rgba(255, 0, 0, 0.3);
   width: 100%;
-  height: 100%;
 `;
 
-const Item = styled.li`
+const Wrapper = styled(CommonPadding)`
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const Item = styled.div`
   cursor: pointer;
 
   font-size: 1.45rem;
@@ -33,6 +25,7 @@ const Item = styled.li`
 
   padding: 16px 5px;
   border-radius: 4px;
+  margin-right: 12px;
 
   &:hover {
     background-color: #eaf0f3eb;
@@ -46,6 +39,11 @@ export default function Header() {
   return (
     <Container>
       <Wrapper>
+        <Item>
+          <Link to="/">
+            <IconComponent />
+          </Link>
+        </Item>
         <Item>
           <Link to="/">Home</Link>
         </Item>
