@@ -1,11 +1,16 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { CommonPadding, IconComponent } from "../style/common";
+import { CommonPadding } from "../style/common";
+import IconComponent from "./MainIcon";
 
 const Container = styled.nav`
-  background-color: rgba(255, 0, 0, 0.3);
+  background-color: ${(props) => props.theme.headerColor};
   width: 100%;
+
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  margin-bottom: 8px;
 `;
 
 const Wrapper = styled(CommonPadding)`
@@ -19,11 +24,11 @@ const Wrapper = styled(CommonPadding)`
 const Item = styled.div`
   cursor: pointer;
 
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: 1.5px;
 
-  padding: 16px 5px;
+  padding: 5px;
   border-radius: 4px;
   margin-right: 12px;
 

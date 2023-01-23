@@ -1,11 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 
-export const CommonPadding = styled.div`
-  padding: 0 230px;
-`;
-
-export const IconComponent = () => {
+export default function IconComponent() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -26,4 +21,4 @@ export const IconComponent = () => {
       />
     </svg>
   );
-};
+}
