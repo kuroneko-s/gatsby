@@ -13,6 +13,7 @@ interface ILayoutProps {
 const Container = styled.main`
   width: 100%;
   height: 100%;
+  position: relative;
 
   margin: 0 auto;
   background-color: ${(props) => props.theme.bgColor};
@@ -20,6 +21,7 @@ const Container = styled.main`
 
 const Wrapper = styled(CommonPadding)`
   min-height: 86vh;
+  position: sticky;
 
   display: flex;
   flex-direction: row;

@@ -27,12 +27,9 @@ const CategoryMenu = styled.ul`
   font-size: 0.8rem;
   font-weight: 500;
 
-  li:first-child {
-    padding-bottom: 12px;
-  }
-
-  li:nth-child(2n + 1) {
-    padding-top: 12px;
+  li {
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
 `;
 
@@ -117,7 +114,7 @@ export default function Category() {
         <CategoryMenu>
           {sampleData.map((category, index) => {
             return (
-              <>
+              <div key={index}>
                 <CategoryTitle>{category.category}</CategoryTitle>
                 {category.data.map((item, idx) => {
                   return (
@@ -127,7 +124,7 @@ export default function Category() {
                     </CategoryItem>
                   );
                 })}
-              </>
+              </div>
             );
           })}
         </CategoryMenu>
