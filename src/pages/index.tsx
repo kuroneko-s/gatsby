@@ -1,4 +1,4 @@
-import type { PageProps } from "gatsby";
+import { graphql, PageProps } from "gatsby";
 import React from "react";
 import Title from "components/Title";
 import Layout from "components/Layout";
@@ -61,7 +61,12 @@ const SampleData: IPost[] = [
   },
 ];
 
-const IndexPage: React.FC<PageProps> = () => {
+export default function IndexPage({ data }: PageProps<Queries.PostListQuery>) {
+  const {
+    allMdx: { nodes },
+  } = data;
+  console.log(nodes);
+
   return (
     <Layout>
       {SampleData.map((IPost, index) => (
@@ -69,9 +74,24 @@ const IndexPage: React.FC<PageProps> = () => {
       ))}
     </Layout>
   );
-};
+}
 
-export default IndexPage;
+export const query = graphql`
+  query PostList {
+    allMdx(sort: { frontmatter: { date: DESC } }, limit: 10) {
+      nodes {
+        frontmatter {
+          author
+          category
+          categoryData
+          date(formatString: "yyyy-MM-DD hh:mm")
+          title
+        }
+        excerpt
+      }
+    }
+  }
+`;
 
 export function Head() {
   return <Title title="main page"></Title>;
