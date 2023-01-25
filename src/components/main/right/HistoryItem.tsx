@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { IHistory } from "./History";
 
 const Container = styled.div`
   padding-bottom: 3px;
@@ -12,29 +11,35 @@ const Container = styled.div`
 `;
 
 const Title = styled.p`
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   margin-bottom: 3px;
   color: gray;
 `;
 
-const Category = styled.p`
-  font-size: 0.78rem;
-  margin-bottom: 3px;
-  color: gray;
-`;
-
-const Date = styled.p`
+const Small = styled.p`
   font-size: 0.7rem;
   margin-bottom: 3px;
   color: gray;
 `;
 
-export default function HistoryItem({ category, date, title }: IHistory) {
+interface IHistoryItem {
+  readonly id: string;
+  readonly frontmatter: {
+    readonly category: string | null;
+    readonly categoryData: string | null;
+    readonly title: string | null;
+    readonly upload: string | null;
+  } | null;
+}
+
+export default function HistoryItem({ frontmatter }: IHistoryItem) {
   return (
     <Container>
-      <Title>{title}</Title>
-      <Category>{category}</Category>
-      <Date>{date}</Date>
+      <Title>{frontmatter?.title}</Title>
+      <Small>
+        {frontmatter?.category}/{frontmatter?.categoryData}
+      </Small>
+      <Small>{frontmatter?.upload}</Small>
     </Container>
   );
 }

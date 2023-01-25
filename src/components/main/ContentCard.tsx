@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { IPost } from "pages";
 import { Card } from "style/common";
 import useTime from "lib/Time";
 import { Link } from "gatsby";
@@ -67,7 +66,7 @@ const Cotnent = styled.p`
   overflow: hidden;
 `;
 
-const Button = styled.div`
+const Button = styled(Link)`
   display: inline-block;
   background-color: ${(props) => props.theme.bgColor};
   cursor: pointer;
@@ -83,16 +82,24 @@ const Button = styled.div`
   }
 `;
 
-export default function Content({
-  title,
-  category,
-  categoryData,
-  content,
-  date,
-  update,
-}: IPost) {
+interface IContent {
+  readonly id: string;
+  excerpt: string | null;
+  frontmatter: {
+    readonly category: string | null;
+    readonly categoryData: string | null;
+    readonly upload: string | null;
+    readonly update: string | null;
+    readonly title: string | null;
+  } | null;
+}
+
+export default function Content({ excerpt, frontmatter, id }: IContent) {
+  const upload = new Date(frontmatter?.upload!).getTime();
+  const update = new Date(frontmatter?.update!).getTime();
+
   const now = Date.now();
-  const beforeUpload = now - date;
+  const beforeUpload = now - upload;
   const beforeUpdate = now - update;
 
   const uploadDate = useTime(beforeUpload);
@@ -101,10 +108,6 @@ export default function Content({
   if (!!update) {
     updateDate = useTime(beforeUpdate);
   }
-
-  const detailBtnHandler = () => {
-    console.log(date, update);
-  };
 
   return (
     <Container>
@@ -120,20 +123,26 @@ export default function Content({
           ) : null}
           <Category>
             <span>
-              <Link to={`/${category}`}>{category}</Link>
+              <Link to={`/${frontmatter?.category}`}>
+                {frontmatter?.category}
+              </Link>
             </span>
             /
             <span>
-              <Link to={`/${category}/${categoryData}`}>{categoryData}</Link>
+              <Link
+                to={`/${frontmatter?.category}/${frontmatter?.categoryData}`}
+              >
+                {frontmatter?.categoryData}
+              </Link>
             </span>
           </Category>
           <ReadTime>15일안에 읽을수있음(150000자)</ReadTime>
         </Header>
         <Contents>
-          <p>{title}</p>
-          <Cotnent>{content}</Cotnent>
+          <p>{frontmatter?.title}</p>
+          <Cotnent>{excerpt}</Cotnent>
         </Contents>
-        <Button onClick={detailBtnHandler}>자세히보기</Button>
+        <Button to={`/blog/${id}`}>자세히보기</Button>
       </Wrapper>
     </Container>
   );

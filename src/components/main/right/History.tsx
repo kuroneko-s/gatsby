@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Card } from "style/common";
 import HistoryItem from "./HistoryItem";
+import { graphql, useStaticQuery } from "gatsby";
 
 const Container = styled(Card)`
   width: 100%;
@@ -19,47 +20,30 @@ const Title = styled.p`
   margin-bottom: 12px;
 `;
 
-export interface IHistory {
-  title: string;
-  category: string;
-  date: string;
-}
-
-// max length 5
-const SampleData: IHistory[] = [
-  {
-    title: "제목",
-    category: "자바",
-    date: "2023-01-24 12:18",
-  },
-  {
-    title: "제목",
-    category: "자바",
-    date: "2023-01-24 12:18",
-  },
-  {
-    title: "제목",
-    category: "자바",
-    date: "2023-01-24 12:18",
-  },
-  {
-    title: "제목",
-    category: "자바",
-    date: "2023-01-24 12:18",
-  },
-  {
-    title: "제목",
-    category: "자바",
-    date: "2023-01-24 12:18",
-  },
-];
-
 export default function History() {
+  const {
+    allMdx: { nodes },
+  } = useStaticQuery<Queries.PostHistoryListQuery>(graphql`
+    query PostHistoryList {
+      allMdx(limit: 5, sort: { frontmatter: { upload: DESC } }) {
+        nodes {
+          frontmatter {
+            category
+            categoryData
+            title
+            upload(formatString: "yyyy-MM-DD hh:mm")
+          }
+          id
+        }
+      }
+    }
+  `);
+
   return (
     <Container>
       <Title>최근글</Title>
-      {SampleData.map((data) => (
-        <HistoryItem {...data} />
+      {nodes.map((node) => (
+        <HistoryItem key={node.id} {...node} />
       ))}
     </Container>
   );
