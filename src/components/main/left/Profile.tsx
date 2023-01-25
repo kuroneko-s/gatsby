@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Card } from "../style/common";
+import { Card } from "../../../style/common";
 
 const Container = styled(Card)`
   width: 100%;

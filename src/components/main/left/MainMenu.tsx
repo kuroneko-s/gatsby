@@ -7,6 +7,7 @@ const Container = styled.div`
   height: 100%;
   top: 10px;
   position: sticky;
+  max-width: 250px;
 `;
 
 export default function MainMenu() {

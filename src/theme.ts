@@ -5,4 +5,5 @@ export const theme: DefaultTheme = {
   footerColor: "#FFFFFF",
   cardColor: "#FFFFFF",
   bgColor: "#F7F7F7",
+  cardShadow: "",
 };

@@ -1,10 +1,11 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import { CommonPadding } from "../style/common";
+import { theme } from "../theme";
 import Footer from "./Footer";
 import Header from "./Header";
-import MainMenu from "./MainMenu";
-import SubMenu from "./SubMenu";
+import MainMenu from "./main/left/MainMenu";
+import SubMenu from "./main/left/SubMenu";
 
 interface ILayoutProps {
   children: any;
@@ -28,12 +29,10 @@ const Wrapper = styled(CommonPadding)`
 
   div:first-child {
     flex-grow: 1;
-    max-width: 250px;
   }
 
   div:last-child {
     flex-grow: 1;
-    max-width: 250px;
   }
 
   div:nth-child(2) {
@@ -48,14 +47,16 @@ const Content = styled.div`
 
 export default function Layout({ children }: ILayoutProps) {
   return (
-    <Container>
-      <Header />
-      <Wrapper>
-        <MainMenu />
-        <Content>{children}</Content>
-        <SubMenu />
-      </Wrapper>
-      <Footer />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Header />
+        <Wrapper>
+          <MainMenu />
+          <Content>{children}</Content>
+          <SubMenu />
+        </Wrapper>
+        <Footer />
+      </Container>
+    </ThemeProvider>
   );
 }

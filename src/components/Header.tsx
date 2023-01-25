@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { CommonPadding } from "../style/common";
-import IconComponent from "./MainIcon";
+import IconComponent from "./main/MainIcon";
 
 const Container = styled.nav`
   background-color: ${(props) => props.theme.headerColor};
