@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { IPost } from "../../pages";
-import { Card } from "../../style/common";
-import useTime from "../../../lib/Time";
+import { IPost } from "pages";
+import { Card } from "style/common";
+import useTime from "lib/Time";
 import { Link } from "gatsby";
 
 const Container = styled(Card)`
@@ -37,6 +37,13 @@ const Upload = styled.span``;
 const Update = styled.span``;
 
 const Category = styled.span`
+  a {
+    color: gray;
+  }
+  a:hover {
+    color: black;
+  }
+
   span {
     margin-right: 0 !important;
   }
@@ -79,6 +86,7 @@ const Button = styled.div`
 export default function Content({
   title,
   category,
+  categoryData,
   content,
   date,
   update,
@@ -89,9 +97,14 @@ export default function Content({
 
   const uploadDate = useTime(beforeUpload);
   let updateDate;
+
   if (!!update) {
     updateDate = useTime(beforeUpdate);
   }
+
+  const detailBtnHandler = () => {
+    console.log(date, update);
+  };
 
   return (
     <Container>
@@ -106,17 +119,21 @@ export default function Content({
             <Update>{`${updateDate.text}전에 업데이트됨`}</Update>
           ) : null}
           <Category>
-            <span>code</span>/<span>java</span>
+            <span>
+              <Link to={`/${category}`}>{category}</Link>
+            </span>
+            /
+            <span>
+              <Link to={`/${category}/${categoryData}`}>{categoryData}</Link>
+            </span>
           </Category>
           <ReadTime>15일안에 읽을수있음(150000자)</ReadTime>
         </Header>
         <Contents>
-          <p>타이틀</p>
-          <Cotnent>
-            내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-          </Cotnent>
+          <p>{title}</p>
+          <Cotnent>{content}</Cotnent>
         </Contents>
-        <Button>자세히보기</Button>
+        <Button onClick={detailBtnHandler}>자세히보기</Button>
       </Wrapper>
     </Container>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Layout from "../../components/Layout";
+import Layout from "components/Layout";
 
 const Wrapper = styled.section`
   padding-right: 30px;

@@ -1,12 +1,13 @@
 import type { PageProps } from "gatsby";
 import React from "react";
-import Title from "../components/Title";
-import Layout from "../components/Layout";
-import MainContent from "../components/main/ContentCard";
+import Title from "components/Title";
+import Layout from "components/Layout";
+import MainContent from "components/main/ContentCard";
 
 export interface IPost {
   title: string;
   category: string;
+  categoryData: string;
   content: string;
   date: number;
   update: number;
@@ -15,7 +16,8 @@ export interface IPost {
 const SampleData: IPost[] = [
   {
     title: "제목",
-    category: "자바",
+    category: "Code",
+    categoryData: "Java",
     date: new Date("2023.01.12.10:10:10").getTime(),
     update: new Date("2022.10.04.10:10:10").getTime(),
     content:
@@ -23,7 +25,8 @@ const SampleData: IPost[] = [
   },
   {
     title: "제목",
-    category: "자바",
+    category: "Code",
+    categoryData: "Java",
     date: new Date("2023.01.13.10:10:10").getTime(),
     update: new Date("2022.11.05.10:10:10").getTime(),
     content:
@@ -31,7 +34,8 @@ const SampleData: IPost[] = [
   },
   {
     title: "제목",
-    category: "자바",
+    category: "Code",
+    categoryData: "Java",
     date: new Date("2023.01.13.10:10:10").getTime(),
     update: new Date("2022.12.04.10:10:10").getTime(),
     content:
@@ -39,7 +43,8 @@ const SampleData: IPost[] = [
   },
   {
     title: "제목",
-    category: "자바",
+    category: "Code",
+    categoryData: "Java",
     date: new Date("2023.01.20.10:10:10").getTime(),
     update: new Date("2022.06.04.10:10:10").getTime(),
     content:
@@ -47,7 +52,8 @@ const SampleData: IPost[] = [
   },
   {
     title: "제목",
-    category: "자바",
+    category: "Code",
+    categoryData: "Java",
     date: new Date("2023.01.21.10:10:10").getTime(),
     update: new Date("2020.10.04.10:10:10").getTime(),
     content:

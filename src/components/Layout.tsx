@@ -1,11 +1,11 @@
 import React from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { CommonPadding } from "../style/common";
-import { theme } from "../theme";
+import { CommonPadding } from "style/common";
+import { theme } from "theme";
 import Footer from "./Footer";
 import Header from "./Header";
 import MainMenu from "./main/left/MainMenu";
-import SubMenu from "./main/left/SubMenu";
+import SubMenu from "./main/right/SubMenu";
 
 interface ILayoutProps {
   children: any;

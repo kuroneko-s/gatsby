@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { CommonPadding } from "../style/common";
+import { CommonPadding } from "style/common";
 import IconComponent from "./main/MainIcon";
 
 const Container = styled.nav`

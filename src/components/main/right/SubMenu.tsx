@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Advertise from "../right/Advertise";
-import History from "../right/History";
+import Advertise from "./Advertise";
+import History from "./History";
 
 const Container = styled.div`
   height: 100%;
