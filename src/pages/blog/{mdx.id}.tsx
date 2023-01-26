@@ -1,7 +1,7 @@
 import CategoryHeader from "components/CategoryHeader";
 import Layout from "components/Layout";
 import { graphql, PageProps } from "gatsby";
-import React from "react";
+import React, { useRef } from "react";
 import { Card } from "style/common";
 import styled from "styled-components";
 
@@ -27,18 +27,26 @@ interface IPostDetail {
 }
 
 export default function PostDetail({
-  pageContext,
-}: PageProps<Queries.PostDetailQuery, IPostDetail>) {
-  console.log(pageContext);
+  data,
+  children,
+}: PageProps<Queries.PostDetailQuery>) {
+  console.log(children);
+
   const {
+    mdx: {
+      frontmatter: { category, categoryData },
+    },
+  } = data;
+
+  /* const {
     frontmatter: { category, categoryData },
-  } = pageContext;
+  } = pageContext; */
 
   return (
     <Layout>
       <CategoryHeader category={category} categoryData={categoryData} />
       <Content>
-        <Wrapper>Hello</Wrapper>
+        <Wrapper className="mdx">{children}</Wrapper>
       </Content>
     </Layout>
   );
@@ -55,7 +63,6 @@ export const query = graphql`
         upload(formatString: "yyyy-MM-DD hh:mm")
         update(formatString: "yyyy-MM-DD hh:mm")
       }
-      body
     }
   }
 `;
