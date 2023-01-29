@@ -1,5 +1,6 @@
 import CategoryHeader from "components/CategoryHeader";
 import Layout from "components/Layout";
+import Title from "components/Title";
 import { graphql, PageProps } from "gatsby";
 import React, { useRef } from "react";
 import { Card } from "style/common";
@@ -13,38 +14,17 @@ const Wrapper = styled.div`
   margin-right: 14px;
 `;
 
-interface IPostDetail {
-  __params: string;
-  id: string;
-  frontmatter: {
-    readonly author: string;
-    readonly category: string;
-    readonly categoryData: string;
-    readonly title: string;
-    readonly upload: string;
-    readonly update: string;
-  };
-}
-
 export default function PostDetail({
   data,
   children,
 }: PageProps<Queries.PostDetailQuery>) {
-  console.log(children);
-
-  const {
-    mdx: {
-      frontmatter: { category, categoryData },
-    },
-  } = data;
-
-  /* const {
-    frontmatter: { category, categoryData },
-  } = pageContext; */
-
+  console.log(data);
   return (
     <Layout>
-      <CategoryHeader category={category} categoryData={categoryData} />
+      <CategoryHeader
+        category={data.mdx?.frontmatter?.category!}
+        categoryData={data.mdx?.frontmatter?.categoryData!}
+      />
       <Content>
         <Wrapper className="mdx">{children}</Wrapper>
       </Content>
@@ -62,7 +42,16 @@ export const query = graphql`
         title
         upload(formatString: "yyyy-MM-DD hh:mm")
         update(formatString: "yyyy-MM-DD hh:mm")
+        file {
+          childImageSharp {
+            gatsbyImageData(height: 400, placeholder: BLURRED)
+          }
+        }
       }
     }
   }
 `;
+
+export function Head() {
+  return <Title title={"Post"}></Title>;
+}

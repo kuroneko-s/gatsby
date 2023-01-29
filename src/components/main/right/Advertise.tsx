@@ -29,7 +29,7 @@ export default function Advertise() {
   return (
     <Container>
       <Title>광고</Title>
-      <Link to={"https://www.youtube.com/@vrecord_choki"}>쵸키 보세요</Link>
+      <a href={"https://www.youtube.com/@vrecord_choki"}>쵸키 보세요</a>
     </Container>
   );
 }
