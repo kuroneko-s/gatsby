@@ -1,6 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import { Card } from "style/common";
+import { graphql, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
 
 const Container = styled(Card)`
   width: 100%;
@@ -55,73 +57,75 @@ const Count = styled.p`
 `;
 
 interface IItem {
-  name: string;
-  count: number;
+  [key: string]: number;
 }
 
 interface ICategory {
-  category: string;
-  data: IItem[];
+  [key: string]: IItem;
 }
 
-const sampleData: ICategory[] = [
-  {
-    category: "Code",
-    data: [
-      {
-        name: "java",
-        count: 5,
-      },
-      {
-        name: "javascript",
-        count: 15,
-      },
-    ],
-  },
-  {
-    category: "Book",
-    data: [
-      {
-        name: "java",
-        count: 5,
-      },
-      {
-        name: "javascript",
-        count: 15,
-      },
-      {
-        name: "시스템 구조",
-        count: 1,
-      },
-    ],
-  },
-  {
-    category: "알고리즘",
-    data: [
-      {
-        name: "정렬",
-        count: 1,
-      },
-    ],
-  },
-];
-
 export default function Category() {
+  const {
+    allMdx: { nodes },
+  } = useStaticQuery<Queries.ProfileInfoQuery>(graphql`
+    query ProfileInfo {
+      allMdx {
+        nodes {
+          frontmatter {
+            category
+            categoryData
+          }
+        }
+      }
+    }
+  `);
+
+  const result = nodes.reduce((acc, cur) => {
+    const categoryKey = cur.frontmatter?.category!;
+    const itemKey = cur.frontmatter?.categoryData!;
+
+    if (acc.hasOwnProperty(categoryKey)) {
+      const item = acc[categoryKey];
+
+      acc = {
+        ...acc,
+        [categoryKey]: {
+          ...item,
+          [itemKey]: (item[itemKey] ?? 0) + 1,
+        },
+      };
+    } else {
+      acc = {
+        ...acc,
+        [categoryKey]: {
+          [itemKey]: 1,
+        },
+      };
+    }
+
+    return acc;
+  }, {} as ICategory);
+
   return (
     <Container>
       <Wrapper>
         <Title>카테고리</Title>
         <CategoryMenu>
-          {sampleData.map((category, index) => {
+          {Object.entries(result).map((arr, index) => {
             return (
               <div key={index}>
-                <CategoryTitle>{category.category}</CategoryTitle>
-                {category.data.map((item, idx) => {
+                <Link to={`/${arr[0]}`}>
+                  <CategoryTitle>{arr[0]}</CategoryTitle>
+                </Link>
+
+                {Object.entries(arr[1]).map((entrie, index) => {
                   return (
-                    <CategoryItem key={idx}>
-                      <p>{item.name}</p>
-                      <Count>{item.count}</Count>
-                    </CategoryItem>
+                    <Link to={`/${arr[0]}/${entrie[0]}`} key={index}>
+                      <CategoryItem>
+                        <p>{entrie[0]}</p>
+                        <Count>{entrie[1]}</Count>
+                      </CategoryItem>
+                    </Link>
                   );
                 })}
               </div>
