@@ -33,6 +33,12 @@ const CategoryMenu = styled.ul`
     padding-top: 6px;
     padding-bottom: 6px;
   }
+
+  a {
+    p {
+      text-transform: capitalize;
+    }
+  }
 `;
 
 const CategoryTitle = styled.p`
@@ -114,13 +120,16 @@ export default function Category() {
           {Object.entries(result).map((arr, index) => {
             return (
               <div key={index}>
-                <Link to={`/${arr[0]}`}>
+                <Link to={`/${arr[0].toLowerCase()}`}>
                   <CategoryTitle>{arr[0]}</CategoryTitle>
                 </Link>
 
                 {Object.entries(arr[1]).map((entrie, index) => {
                   return (
-                    <Link to={`/${arr[0]}/${entrie[0]}`} key={index}>
+                    <Link
+                      to={`/${arr[0].toLowerCase()}/${entrie[0].toLowerCase()}`}
+                      key={index}
+                    >
                       <CategoryItem>
                         <p>{entrie[0]}</p>
                         <Count>{entrie[1]}</Count>
