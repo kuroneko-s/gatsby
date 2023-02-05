@@ -129,9 +129,7 @@ export default function Content({ excerpt, frontmatter, id }: IContent) {
             </span>
             /
             <span>
-              <Link
-                to={`/${frontmatter?.category}/${frontmatter?.categoryData}`}
-              >
+              <Link to={`/${frontmatter?.categoryData}`}>
                 {frontmatter?.categoryData}
               </Link>
             </span>

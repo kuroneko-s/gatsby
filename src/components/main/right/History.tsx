@@ -5,14 +5,13 @@ import HistoryItem from "./HistoryItem";
 import { graphql, useStaticQuery } from "gatsby";
 
 const Container = styled(Card)`
-  width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
 
   padding-left: 12px;
+  padding-right: 12px;
 `;
 
 const Title = styled.p`

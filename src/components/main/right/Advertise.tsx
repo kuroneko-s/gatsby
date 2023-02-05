@@ -1,11 +1,8 @@
-import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { Card } from "style/common";
 
 const Container = styled(Card)`
-  width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;

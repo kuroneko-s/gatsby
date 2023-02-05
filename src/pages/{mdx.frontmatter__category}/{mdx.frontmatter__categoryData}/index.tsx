@@ -4,7 +4,7 @@ import React from "react";
 import MainContent from "components/main/ContentCard";
 import Title from "components/Title";
 
-export default function CategoryDataIndex({
+export default function CategoryData({
   data,
 }: PageProps<Queries.CategoryDataListQuery>) {
   const {
@@ -33,6 +33,7 @@ export const query = graphql`
           category: { eq: $frontmatter__category }
         }
       }
+      sort: { frontmatter: { upload: DESC } }
     ) {
       nodes {
         frontmatter {
@@ -49,6 +50,9 @@ export const query = graphql`
   }
 `;
 
-export function Head() {
-  return <Title title="Main"></Title>;
+export function Head({ params }: PageProps<Queries.CategoryDataListQuery>) {
+  const titleArr = [...params.frontmatter__categoryData.toLowerCase()];
+  titleArr.splice(0, 1, titleArr[0].toUpperCase());
+
+  return <Title title={titleArr.join("")}></Title>;
 }

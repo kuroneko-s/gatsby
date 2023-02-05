@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import { Card } from "style/common";
 import styled from "styled-components";
@@ -16,15 +17,27 @@ const Container = styled(Card)`
   }
 `;
 
+const FullPath = styled(Link)`
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
 export default function CategoryHeader({
   category,
   categoryData,
 }: ICategoryHeader) {
   return (
     <Container>
-      <span>{category}</span>
-      <span>&#62;</span>
-      <span>{categoryData}</span>
+      <FullPath to={`/${category}/${categoryData}`}>
+        <FullPath to={`/${category}`}>
+          <span>{category}</span>
+        </FullPath>
+        <span>&#62;</span>
+        <FullPath to={`/${categoryData}`}>
+          <span>{categoryData}</span>
+        </FullPath>
+      </FullPath>
     </Container>
   );
 }

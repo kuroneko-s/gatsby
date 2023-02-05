@@ -2,7 +2,7 @@ import CategoryHeader from "components/CategoryHeader";
 import Layout from "components/Layout";
 import Title from "components/Title";
 import { graphql, PageProps } from "gatsby";
-import React, { useRef } from "react";
+import React from "react";
 import { Card } from "style/common";
 import styled from "styled-components";
 
