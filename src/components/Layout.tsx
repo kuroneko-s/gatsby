@@ -13,7 +13,7 @@ interface ILayoutProps {
 
 const Container = styled.main`
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   position: relative;
 
   margin: 0 auto;
@@ -21,7 +21,8 @@ const Container = styled.main`
 `;
 
 const Wrapper = styled(CommonPadding)`
-  min-height: 86vh;
+  height: 88vh;
+  max-height: 88vh;
   position: sticky;
 
   display: flex;
