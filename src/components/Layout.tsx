@@ -21,8 +21,10 @@ const Container = styled.main`
 `;
 
 const Wrapper = styled(CommonPadding)`
-  height: 88vh;
-  max-height: 88vh;
+  padding-top: 70px;
+  padding-bottom: 100px;
+
+  min-height: 88vh;
   position: sticky;
 
   display: flex;

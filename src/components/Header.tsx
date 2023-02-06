@@ -5,6 +5,11 @@ import { CommonPadding } from "style/common";
 import IconComponent from "./main/MainIcon";
 
 const Container = styled.nav`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+
   background-color: ${(props) => props.theme.headerColor};
   width: 100%;
 

@@ -5,12 +5,15 @@ import { CommonPadding } from "style/common";
 import IconComponent from "./main/MainIcon";
 
 const Container = styled.footer`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+
   width: 100%;
   height: 80px;
 
   background-color: ${(props) => props.theme.headerColor};
-  bottom: 0;
-
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   margin-top: 8px;
