@@ -60,7 +60,9 @@ export default function Footer() {
           </p>
         </Content>
         <Content>
-          <IconComponent />
+          <Link to="/">
+            <IconComponent />
+          </Link>
         </Content>
       </Wrapper>
     </Container>

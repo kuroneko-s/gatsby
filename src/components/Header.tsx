@@ -60,9 +60,9 @@ export default function Header() {
         <Item>
           <Link to="/about">About</Link>
         </Item>
-        <Item>
+        {/* <Item>
           <Link to="/blog">Blog</Link>
-        </Item>
+        </Item> */}
       </Wrapper>
     </Container>
   );
