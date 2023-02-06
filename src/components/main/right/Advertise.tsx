@@ -24,7 +24,7 @@ const Title = styled.p`
 
 export default function Advertise() {
   return (
-    <Container>
+    <Container className="advertise">
       <Title>광고</Title>
       <a href={"https://www.youtube.com/@vrecord_choki"}>쵸키 보세요</a>
     </Container>

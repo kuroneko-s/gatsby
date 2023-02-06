@@ -29,14 +29,12 @@ export default function CategoryHeader({
 }: ICategoryHeader) {
   return (
     <Container>
-      <FullPath to={`/${category}/${categoryData}`}>
-        <FullPath to={`/${category}`}>
-          <span>{category}</span>
-        </FullPath>
-        <span>&#62;</span>
-        <FullPath to={`/${categoryData}`}>
-          <span>{categoryData}</span>
-        </FullPath>
+      <FullPath to={`/${category}`}>
+        <span>{category}</span>
+      </FullPath>
+      <span>&#62;</span>
+      <FullPath to={`/${categoryData}`}>
+        <span>{categoryData}</span>
       </FullPath>
     </Container>
   );

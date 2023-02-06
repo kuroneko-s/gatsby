@@ -1,12 +1,12 @@
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 import { Card } from "style/common";
 import { graphql, useStaticQuery } from "gatsby";
 import { Link } from "gatsby";
 
 const Container = styled(Card)`
-  width: 100%;
-  overflow: hid;
+  width: 250px;
+  max-width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -14,6 +14,7 @@ const Container = styled(Card)`
   justify-content: center;
 
   margin-top: 14px;
+  margin-bottom: 14px;
 `;
 
 const Wrapper = styled.div`

@@ -23,6 +23,7 @@ const Container = styled.main`
 const Wrapper = styled(CommonPadding)`
   padding-top: 70px;
   padding-bottom: 100px;
+  padding-left: 12px;
 
   min-height: 88vh;
   position: sticky;
@@ -41,11 +42,44 @@ const Wrapper = styled(CommonPadding)`
   div:nth-child(2) {
     flex-grow: 2;
   }
+
+  @media screen and (min-width: 1201px) {
+    .main_menu {
+      .history,
+      .advertise {
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .sub_menu {
+      display: none;
+    }
+
+    .profile {
+      flex-basis: 250px;
+    }
+
+    .main_menu {
+      .history,
+      .advertise {
+        display: block;
+      }
+    }
+  }
 `;
 
 const Content = styled.div`
-  max-width: 720px;
   margin: 0 12px;
+
+  @media screen and (max-width: 1200px) {
+    max-width: auto;
+  }
+
+  @media screen and (min-width: 1201px) {
+    max-width: 720px;
+  }
 `;
 
 export default function Layout({ children }: ILayoutProps) {

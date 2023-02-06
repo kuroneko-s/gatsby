@@ -12,7 +12,7 @@ const Container = styled.div`
 
 export default function SubMenu() {
   return (
-    <Container>
+    <Container className="sub_menu">
       <History />
       <Advertise />
     </Container>

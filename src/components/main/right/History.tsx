@@ -39,7 +39,7 @@ export default function History() {
   `);
 
   return (
-    <Container>
+    <Container className="history">
       <Title>최근글</Title>
       {nodes.map((node) => (
         <HistoryItem key={node.id} {...node} />

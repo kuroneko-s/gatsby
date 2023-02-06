@@ -5,7 +5,8 @@ import { StaticImage } from "gatsby-plugin-image";
 import { graphql, useStaticQuery } from "gatsby";
 
 const Container = styled(Card)`
-  width: 100%;
+  width: 250px;
+  max-width: 100%;
 
   display: flex;
   flex-direction: column;
