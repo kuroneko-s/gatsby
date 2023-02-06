@@ -12,6 +12,16 @@ const Container = styled(Card)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  margin-bottom: 14px;
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    width: 100%;
+
+    flex-direction: row;
+    padding: 6px 0px;
+  }
 `;
 
 const ProfileWrapper = styled.div`
@@ -25,16 +35,40 @@ const ProfileWrapper = styled.div`
     font-size: 0.9rem;
     font-weight: 600;
   }
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    p {
+      display: none;
+    }
+  }
 `;
 
 const ImgWrapper = styled.div`
   width: 72px;
   height: 72px;
   border-radius: 18px;
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 const InfoWrapper = styled.div`
   margin-top: 12px;
+  padding: 0 12px;
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    margin-top: 0px;
+    p {
+      margin-top: 0px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  }
 `;
 
 const Info = styled.ul`
@@ -52,6 +86,12 @@ const Info = styled.ul`
       margin-top: 8px;
     }
   }
+
+  @media screen and (max-width: 580px) {
+    li {
+      padding: 9px;
+    }
+  }
 `;
 
 const BtnWrapper = styled.div`
@@ -60,9 +100,14 @@ const BtnWrapper = styled.div`
   border: #d5d5d5 1px solid;
   padding: 11px 48px;
   cursor: pointer;
+  text-align: center;
 
   &:hover {
     background-color: #ebebeb;
+  }
+
+  @media screen and (max-width: 580px) {
+    padding: 11px 0px;
   }
 `;
 
@@ -90,7 +135,7 @@ export default function Profile() {
     ?.size;
 
   return (
-    <Container>
+    <Container className="profile">
       <ProfileWrapper>
         <ImgWrapper>
           <StaticImage src="../../../images/chyoki.png" alt="profile" />
@@ -113,10 +158,10 @@ export default function Profile() {
             <p>{tags ?? 0}</p>
           </li>
         </Info>
+        <a href="https://github.com/kuroneko-s" target={"_blank"}>
+          <BtnWrapper>동혁's Git</BtnWrapper>
+        </a>
       </InfoWrapper>
-      <a href="https://github.com/kuroneko-s" target={"_blank"}>
-        <BtnWrapper>동혁's Git</BtnWrapper>
-      </a>
     </Container>
   );
 }

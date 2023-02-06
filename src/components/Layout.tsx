@@ -43,6 +43,7 @@ const Wrapper = styled(CommonPadding)`
     flex-grow: 2;
   }
 
+  // PC
   @media screen and (min-width: 1201px) {
     .main_menu {
       .history,
@@ -52,6 +53,7 @@ const Wrapper = styled(CommonPadding)`
     }
   }
 
+  // Tablet
   @media screen and (max-width: 1200px) {
     .sub_menu {
       display: none;
@@ -60,9 +62,24 @@ const Wrapper = styled(CommonPadding)`
     .profile {
       flex-basis: 250px;
     }
+  }
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    flex-direction: column;
+    position: relative;
+
+    padding-right: 12px;
+    padding-top: 50px;
 
     .main_menu {
-      .history,
+      width: auto;
+      max-width: 100%;
+    }
+
+    .sub_menu {
+      display: block;
+
       .advertise {
         display: block;
       }

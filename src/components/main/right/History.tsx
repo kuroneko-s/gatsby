@@ -12,6 +12,16 @@ const Container = styled(Card)`
 
   padding-left: 12px;
   padding-right: 12px;
+
+  // Tablet
+  @media screen and (max-width: 1200px) {
+    display: block;
+  }
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    display: none;
+  }
 `;
 
 const Title = styled.p`

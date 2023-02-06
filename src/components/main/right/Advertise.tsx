@@ -15,6 +15,16 @@ const Container = styled(Card)`
     font-size: 0.8rem;
     font-weight: 800;
   }
+
+  // Tablet
+  @media screen and (max-width: 1200px) {
+    display: block;
+  }
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    display: none;
+  }
 `;
 
 const Title = styled.p`

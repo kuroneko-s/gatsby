@@ -13,8 +13,12 @@ const Container = styled(Card)`
   align-items: flex-start;
   justify-content: center;
 
-  margin-top: 14px;
   margin-bottom: 14px;
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    display: none;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -114,7 +118,7 @@ export default function Category() {
   }, {} as ICategory);
 
   return (
-    <Container>
+    <Container className="category">
       <Wrapper>
         <Title>카테고리</Title>
         <CategoryMenu>

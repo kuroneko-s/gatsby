@@ -11,6 +11,11 @@ const Container = styled.div`
   position: sticky;
   width: 250px;
   max-width: 250px;
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    position: relative;
+  }
 `;
 
 export default function MainMenu() {
