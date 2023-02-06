@@ -97,6 +97,11 @@ const Content = styled.div`
   @media screen and (min-width: 1201px) {
     max-width: 720px;
   }
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    margin: 0;
+  }
 `;
 
 export default function Layout({ children }: ILayoutProps) {

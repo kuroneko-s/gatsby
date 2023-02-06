@@ -8,6 +8,12 @@ const Container = styled.div`
   top: 10px;
   position: sticky;
   max-width: 250px;
+
+  // Full size Phone
+  @media screen and (max-width: 580px) {
+    width: auto;
+    max-width: 100%;
+  }
 `;
 
 export default function SubMenu() {

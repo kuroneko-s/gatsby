@@ -23,7 +23,9 @@ const Container = styled(Card)`
 
   // Full size Phone
   @media screen and (max-width: 580px) {
+    width: auto;
     display: none;
+    margin-top: 0px;
   }
 `;
 
