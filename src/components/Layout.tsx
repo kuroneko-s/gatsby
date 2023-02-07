@@ -22,7 +22,7 @@ const Container = styled.main`
 
 const Wrapper = styled(CommonPadding)`
   padding-top: 70px;
-  padding-bottom: 100px;
+  padding-bottom: 90px;
   padding-left: 12px;
 
   min-height: 88vh;
