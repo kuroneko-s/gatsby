@@ -72,6 +72,14 @@ const Wrapper = styled(CommonPadding)`
     padding-right: 12px;
     padding-top: 50px;
 
+    div:first-child {
+      flex-grow: unset;
+    }
+
+    div:last-child {
+      flex-grow: unset;
+    }
+
     .main_menu {
       width: auto;
       max-width: 100%;
@@ -88,7 +96,7 @@ const Wrapper = styled(CommonPadding)`
 `;
 
 const Content = styled.div`
-  margin: 0 12px;
+  margin: 0px 12px;
 
   @media screen and (max-width: 1200px) {
     max-width: auto;
@@ -100,7 +108,7 @@ const Content = styled.div`
 
   // Full size Phone
   @media screen and (max-width: 580px) {
-    margin: 0;
+    margin: 5px 0 0 0;
   }
 `;
 
