@@ -1,5 +1,5 @@
 import { graphql, PageProps, useStaticQuery } from "gatsby";
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Title from "components/Title";
 import Layout from "components/Layout";
 import MainContent from "components/main/ContentCard";
@@ -15,10 +15,26 @@ const PagingBox = styled.div`
 const PageNum = styled.p`
   padding: 5px;
   font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
+interface IPost {
+  readonly id: string;
+  readonly excerpt: string | null;
+  readonly frontmatter: {
+    readonly category: string | null;
+    readonly categoryData: string | null;
+    readonly title: string | null;
+    readonly upload: string | null;
+    readonly update: string | null;
+  } | null;
+}
+
 export default function IndexPage({ data }: PageProps<Queries.PostListQuery>) {
-  const pageNumBox = useRef(null);
   const {
     allMdx: { nodes, totalCount },
   } = data;
@@ -26,46 +42,39 @@ export default function IndexPage({ data }: PageProps<Queries.PostListQuery>) {
   const [currentPageNum, setCurrentPageNum] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
 
-  // dummy
-  const nodeArr = Array.from({ length: 312 })
-    .fill(1)
-    .map((_, index) => index);
-
   // TODO: 길이가 0일때 따로 조치해줘야함
-  const totalPage = Math.ceil(nodeArr.length / 100); // 1,2,3,4 ... ( 100개 묶음 )
-  const pageTotalNodes: { [key: string]: any } = {};
+  const totalPage = Math.ceil(totalCount / 100); // 1,2,3,4 ... ( 100개 묶음 )
+  const pageTotalNodes: { [key: string]: IPost[][] } = {};
 
   for (let index = 0; index < totalPage; index++) {
     const startIdx = index * 100;
     const endIdx = (index + 1) * 100;
 
-    const arr = nodeArr.slice(startIdx, endIdx);
-    const innerArr = [];
+    const arr: IPost[] = nodes.slice(startIdx, endIdx);
+    const innerArr: IPost[][] = [];
 
     for (let innerIdx = 0; innerIdx < Math.ceil(arr.length / 10); innerIdx++) {
       innerArr.push(arr.slice(innerIdx * 10, (innerIdx + 1) * 10));
     }
-    // @ts-ignore
     pageTotalNodes[index + 1 + ""] = innerArr;
   }
 
-  const pageClickHandler = (e: any) => {
+  const pageClickHandler = (e: React.MouseEvent<HTMLElement>) => {
     const targetEl = e.currentTarget;
-    setCurrentPageNum(e.currentTarget.dataset.value);
+    setCurrentPageNum(Number(e.currentTarget.dataset.value));
 
     const els = document.querySelectorAll("[data-value]");
     els.forEach((el) => el.classList.remove("active"));
     targetEl.classList.add("active");
   };
 
-  const leftArrowHandler = (e: any) => {
+  const leftArrowHandler = () => {
     if (currentPage !== 1) {
       setCurrentPage((cur) => cur - 1);
       setCurrentPageNum((currentPage - 2) * 10 + 1); // 이부분이 왜 -2가 되는진 모르겟음...
     }
   };
-
-  const rightArrowHandler = (e: any) => {
+  const rightArrowHandler = () => {
     if (currentPage !== totalPage) {
       setCurrentPage((cur) => cur + 1);
       setCurrentPageNum(currentPage * 10 + 1);
@@ -74,11 +83,16 @@ export default function IndexPage({ data }: PageProps<Queries.PostListQuery>) {
 
   return (
     <Layout>
-      {nodes.map((node) => (
+      {pageTotalNodes[currentPage + ""][currentPageNum - 1].map((node) => (
         <MainContent key={node.id} {...node} />
       ))}
-      <PagingBox ref={pageNumBox}>
-        <PageNum onClick={leftArrowHandler}>왼쪽</PageNum>
+      <PagingBox>
+        <PageNum
+          className={currentPage === 1 ? "none_click" : ""}
+          onClick={leftArrowHandler}
+        >
+          왼쪽
+        </PageNum>
         {pageTotalNodes[currentPage + ""].map((_, index) => {
           return (
             <PageNum
@@ -95,7 +109,12 @@ export default function IndexPage({ data }: PageProps<Queries.PostListQuery>) {
             </PageNum>
           );
         })}
-        <PageNum onClick={rightArrowHandler}>오른쪽</PageNum>
+        <PageNum
+          className={currentPage === totalPage ? "none_click" : ""}
+          onClick={rightArrowHandler}
+        >
+          오른쪽
+        </PageNum>
       </PagingBox>
     </Layout>
   );
