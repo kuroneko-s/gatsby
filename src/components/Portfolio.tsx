@@ -126,7 +126,7 @@ export default function Portfolio() {
           <span>More</span>
         </Palette>
         <LinkWrapper>
-          <Link to="https://github.com/kuroneko-s">github: kuroneko-s</Link>
+          <a href="https://github.com/kuroneko-s">github: kuroneko-s</a>
         </LinkWrapper>
       </Wrapper>
     </Container>

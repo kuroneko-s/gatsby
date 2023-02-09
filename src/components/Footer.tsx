@@ -54,9 +54,7 @@ export default function Footer() {
           <p>email: choidh.dev@gmail.com</p>
           <p>
             git:{" "}
-            <Link to="https://github.com/kuroneko-s">
-              github.com/kuroneko-s
-            </Link>
+            <a href="https://github.com/kuroneko-s">github.com/kuroneko-s</a>
           </p>
         </Content>
         <Content>
