@@ -13,12 +13,21 @@ const PagingBox = styled.div`
 `;
 
 const PageNum = styled.p`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 5px;
   font-weight: 600;
   cursor: pointer;
 
   &:hover {
     opacity: 0.5;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
   }
 `;
 
@@ -66,6 +75,8 @@ export default function IndexPage({ data }: PageProps<Queries.PostListQuery>) {
     const els = document.querySelectorAll("[data-value]");
     els.forEach((el) => el.classList.remove("active"));
     targetEl.classList.add("active");
+
+    window.scrollTo(0, 0);
   };
 
   const leftArrowHandler = () => {
@@ -73,12 +84,16 @@ export default function IndexPage({ data }: PageProps<Queries.PostListQuery>) {
       setCurrentPage((cur) => cur - 1);
       setCurrentPageNum((currentPage - 2) * 10 + 1); // 이부분이 왜 -2가 되는진 모르겟음...
     }
+
+    window.scrollTo(0, 0);
   };
   const rightArrowHandler = () => {
     if (currentPage !== totalPage) {
       setCurrentPage((cur) => cur + 1);
       setCurrentPageNum(currentPage * 10 + 1);
     }
+
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -91,7 +106,20 @@ export default function IndexPage({ data }: PageProps<Queries.PostListQuery>) {
           className={currentPage === 1 ? "none_click" : ""}
           onClick={leftArrowHandler}
         >
-          왼쪽
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-12 h-12"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 19.5L8.25 12l7.5-7.5"
+            />
+          </svg>
         </PageNum>
         {pageTotalNodes[currentPage + ""].map((_, index) => {
           return (
@@ -113,7 +141,20 @@ export default function IndexPage({ data }: PageProps<Queries.PostListQuery>) {
           className={currentPage === totalPage ? "none_click" : ""}
           onClick={rightArrowHandler}
         >
-          오른쪽
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
         </PageNum>
       </PagingBox>
     </Layout>
