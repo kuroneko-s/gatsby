@@ -3,19 +3,21 @@ import { graphql, PageProps } from "gatsby";
 import React from "react";
 import MainContent from "components/main/ContentCard";
 import Title from "components/Title";
+import usePaging from "components/usePaging";
+import Paging from "components/Paging";
 
 export default function CategoryDataIndex({
   data,
 }: PageProps<Queries.CategoryDataListQuery>) {
-  const {
-    allMdx: { nodes },
-  } = data;
+  const { allMdx } = data;
+  const result = usePaging(allMdx);
 
   return (
     <Layout>
-      {nodes.map((node) => (
+      {result.result.nodes.map((node) => (
         <MainContent key={node.id} {...node} />
       ))}
+      <Paging result={result} totalCount={allMdx.totalCount} />
     </Layout>
   );
 }
@@ -23,7 +25,6 @@ export default function CategoryDataIndex({
 export const query = graphql`
   query CategoryDataList($frontmatter__categoryData: String) {
     allMdx(
-      limit: 10
       filter: {
         frontmatter: { categoryData: { eq: $frontmatter__categoryData } }
       }
@@ -40,6 +41,7 @@ export const query = graphql`
         id
         excerpt
       }
+      totalCount
     }
   }
 `;
