@@ -31,3 +31,10 @@ export interface IPagingParams {
   result: PagingResult;
   totalCount: number;
 }
+
+export interface ICodeParams {
+  codeString: any;
+  language: any;
+  metastring: any;
+  [key: string]: any;
+}
