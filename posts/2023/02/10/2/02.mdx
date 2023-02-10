@@ -1,0 +1,30 @@
+---
+title: Spring Security Login Session
+category: spring
+categoryData: security
+upload: "2023-02-10 15:44:00"
+update: "2023-02-10 15:44:00"
+author: 최동혁
+file: chyoki.png
+---
+
+# Spring Security Login Session
+
+## 내가 알고 있던 지식
+
+Spring Security에서 로그인 절차를 진행할 때 THREADLOCAL에만 적용하지않고 Web의 Session에도 저장한다.
+그래서 인증 검증을 할 때 doFilter에서 THREADLOCAL의 값을 참조하는게 아니라 Web의 Session을 참조한다.
+doFilter에서 값을 검증이 완료되면 THREADLOCAL의 값을 초기화한다.
+그러니깐 Login -> THREADLOCAL & Session에 저장 -> SecurityContextHolder의 Authentication 값을 초기화함. (THREADLOCAL의 값을 초기화 하는 것)
+웹의 요청이 오면 THREADLOCAL의 값을 확인할 때 매번 요청마다 지우니깐 이전 요청에서 저장한 값이 활성화 상태가 아님. 그래서 새로운 요청이 오면 Session에 값이 있는지를 확인함.
+이 값이 있으면 그 값을 THREADLOCAL에 다시 넣고 웹 요청처리를 하고 다시 THREADLOCAL의 값을 비움.
+이런식으로 돌아가는 거로 기억하고 있음.
+
+```js
+    SecurityContext context = SecurityContextHolder.getContext(); // Security Context 가져옴
+    Authentication authentication = new UsernamePasswordAuthenticationToken(new UserDetailes(), null, Collections.singleton(new SimpleGrantedAuthority("ADMIN"))); // 인증된 값을 생성
+    context.setAuthentication(authentication); // 인증된 값을 Security Context에 넣어줌
+
+    HttpSession session = request.getSession(true); // request의 Session을 가져옴
+    session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext()); // Session에 인증된 SecurityContext를 넣어줌.
+```

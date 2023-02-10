@@ -1,0 +1,22 @@
+---
+title: Blog Update 내용
+category: blog
+categoryData: update
+upload: "2023-02-10 15:44:00"
+update: "2023-02-10 15:44:00"
+author: 최동혁
+file: chyoki.png
+---
+
+# Blog Update 내용
+
+0. Open 테스트.
+
+1. Paging 전체 적용.
+
+## 페이징 방향성
+
+처음에 값을 전부 받아와서 해당 값으로부터 분할 작업 진행. 이후 따로 graphql을 호출하지 않도록 진행하였다.
+사유 - 굳이 요청마다 graphql을 호출할 이유가 없었고, 스태틱 페이지여서 graphql을 호출할 수 있을지 불투명했다.
+그래서 값을 한번에 받아서 처리하도록 진행.
+이러는 편이 처음에만 속도가 살짝 걸릴 뿐이고, 받아오는 수도 적어서 효율적이지 않을까...
