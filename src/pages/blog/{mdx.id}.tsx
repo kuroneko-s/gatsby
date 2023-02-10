@@ -18,7 +18,6 @@ export default function PostDetail({
   data,
   children,
 }: PageProps<Queries.PostDetailQuery>) {
-  console.log(data);
   return (
     <Layout>
       <CategoryHeader
@@ -52,6 +51,6 @@ export const query = graphql`
   }
 `;
 
-export function Head() {
-  return <Title title={"Post"}></Title>;
+export function Head(props: any) {
+  return <Title title={props.pageContext.frontmatter.title}></Title>;
 }
