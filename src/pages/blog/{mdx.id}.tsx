@@ -62,8 +62,6 @@ export default function PostDetail({
     },
   };
 
-  console.log(data);
-
   const { mdx } = data;
 
   return (
