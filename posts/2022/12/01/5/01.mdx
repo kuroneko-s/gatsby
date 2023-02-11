@@ -1,0 +1,28 @@
+---
+title: 프로그래머스
+category: programmers
+categoryData: javascript
+upload: "2022-12-01 09:00:00"
+update: "2023-02-11 10:00:00"
+author: 최동혁
+---
+
+# 프로그래머스 코딩 테스트
+
+<a href="https://school.programmers.co.kr/learn/courses/30/lessons/134240">
+  문제 주소 - https://school.programmers.co.kr/learn/courses/30/lessons/134240
+</a>
+
+```js
+function solution(food) {
+  food.shift();
+
+  const result = food.map((v, idx) => {
+    return String(idx + 1).repeat(Math.floor(v / 2));
+  });
+
+  return [...result, "0", ...result.reverse()].join("");
+}
+
+console.log(solution([1, 7, 1, 2]));
+```

@@ -9,6 +9,12 @@
   margin-bottom: 15px;
 }
 
+.mdx h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
 .mdx p {
   margin-bottom: 8px;
 }

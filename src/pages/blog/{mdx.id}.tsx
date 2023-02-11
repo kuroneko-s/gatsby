@@ -17,6 +17,12 @@ const Wrapper = styled.div`
   margin-right: 14px;
 `;
 
+const PostHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+`;
+
 const preToCodeBlock = (preProps: any) => {
   if (
     preProps.children &&
@@ -56,6 +62,10 @@ export default function PostDetail({
     },
   };
 
+  console.log(data);
+
+  const { mdx } = data;
+
   return (
     <Layout>
       <CategoryHeader
@@ -64,6 +74,13 @@ export default function PostDetail({
       />
       <Content>
         <Wrapper className="mdx">
+          <PostHeader>
+            <p>
+              <span>게시자 - {mdx?.frontmatter?.author}</span> /{" "}
+              <span>게시일 - {mdx?.frontmatter?.upload}</span> /{" "}
+              <span>수정일 - {mdx?.frontmatter?.update}</span>
+            </p>
+          </PostHeader>
           <MDXProvider components={components}>
             <div>{children}</div>
           </MDXProvider>
