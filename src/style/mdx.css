@@ -30,3 +30,7 @@
   color: gray;
   margin-right: 5px;
 }
+
+.mdx img {
+  max-width: 700px;
+}
